@@ -7,7 +7,7 @@
       "RelativeMoniker": "D:0:0:{BA926510-03A3-4E7F-922F-8DC5920B26E9}|Apteka.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BA926510-03A3-4E7F-922F-8DC5920B26E9}|Apteka.csproj|d:\\\u0438\u0441 \u0440\u043F\u043E\\apteka\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{BA926510-03A3-4E7F-922F-8DC5920B26E9}|Apteka.csproj|D:\\\u0418\u0421 \u0420\u041F\u041E\\Apteka\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{BA926510-03A3-4E7F-922F-8DC5920B26E9}|Apteka.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
@@ -27,14 +27,14 @@
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "Form1.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "Title": "Form1.cs [Design]",
               "DocumentMoniker": "D:\\\u0418\u0421 \u0420\u041F\u041E\\Apteka\\Form1.cs",
               "RelativeDocumentMoniker": "Form1.cs",
-              "ToolTip": "D:\\\u0418\u0421 \u0420\u041F\u041E\\Apteka\\Form1.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
-              "RelativeToolTip": "Form1.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "ToolTip": "D:\\\u0418\u0421 \u0420\u041F\u041E\\Apteka\\Form1.cs [Design]",
+              "RelativeToolTip": "Form1.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-02-27T09:54:59.622Z",
-              "EditorCaption": " [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]"
+              "EditorCaption": " [Design]"
             },
             {
               "$type": "Document",
@@ -44,7 +44,7 @@
               "RelativeDocumentMoniker": "Form1.cs",
               "ToolTip": "D:\\\u0418\u0421 \u0420\u041F\u041E\\Apteka\\Form1.cs",
               "RelativeToolTip": "Form1.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAAAAwBgAAABaAAAAAAAAAA==",
+              "ViewState": "AgIAABAAAAAAAAAAAAAiwCYAAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-02-27T09:32:36.395Z",
               "EditorCaption": ""

@@ -59,3 +59,4 @@ D:\ИС РПО\Apteka\obj\Debug\net8.0-windows\Apteka.pdb
 D:\ИС РПО\Apteka\obj\Debug\net8.0-windows\Apteka.genruntimeconfig.cache
 D:\ИС РПО\Apteka\obj\Debug\net8.0-windows\ref\Apteka.dll
 D:\ИС РПО\Apteka\obj\Debug\net8.0-windows\Apteka.Form1.resources
+D:\ИС РПО\Apteka\obj\Debug\net8.0-windows\Apteka.sourcelink.json

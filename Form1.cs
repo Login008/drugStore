@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Drawing; // Для использования Image
 using System.Linq;
 using System.Windows.Forms;
 using Microsoft.EntityFrameworkCore;
@@ -12,6 +13,7 @@ namespace Apteka
         private DataGridView _grid;
         private TextBox _searchBox;
         private TreeView _categoryTree;
+        private PictureBox _imageBox; // Добавляем PictureBox
 
         public Form1()
         {
@@ -22,7 +24,7 @@ namespace Apteka
             this.Width = 800;
             this.Height = 600;
 
-            _searchBox = new TextBox { Width = 200, PlaceholderText = "Поиск лекарства..." };
+            _searchBox = new TextBox { Width = 300, PlaceholderText = "Поиск лекарства..." };
             _searchBox.TextChanged += SearchBox_TextChanged;
 
             _categoryTree = new TreeView { Width = 300, Dock = DockStyle.Left };
@@ -30,12 +32,26 @@ namespace Apteka
 
             _grid = new DataGridView { Dock = DockStyle.Fill, ReadOnly = true, AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill };
 
+            // Создаем PictureBox для отображения изображения
+            _imageBox = new PictureBox
+            {
+                Dock = DockStyle.Right,
+                Width = 500,
+                SizeMode = PictureBoxSizeMode.StretchImage // Устанавливаем режим растягивания
+            };
+
             var layout = new TableLayoutPanel { Dock = DockStyle.Fill, ColumnCount = 2, RowCount = 2 };
-            layout.Controls.Add(_categoryTree, 0, 1);
-            layout.Controls.Add(_grid, 1, 1);
-            layout.Controls.Add(_searchBox, 0, 0);
+            layout.Controls.Add(_searchBox, 0, 1);
+            layout.Controls.Add(_imageBox, 1, 1);
+            layout.Controls.Add(_categoryTree, 0, 0);
+            layout.Controls.Add(_grid, 1, 0);
             this.Controls.Add(layout);
 
+            LoadData();
+        }
+
+        private void LoadData()
+        {
             var medicines = _context.Medicines.ToList();
             _grid.DataSource = medicines;
 
@@ -52,6 +68,17 @@ namespace Apteka
             string searchText = _searchBox.Text.ToLower();
             var filtered = _context.Medicines.Where(m => m.Name.ToLower().Contains(searchText)).ToList();
             _grid.DataSource = filtered;
+
+            // Показать изображение препарата, если оно найдено
+            if (filtered.Count > 0)
+            {
+                var selectedMedicine = filtered.FirstOrDefault(); // Выберите первый найденный препарат
+                ShowImage(selectedMedicine.ImagePath);
+            }
+            else
+            {
+                _imageBox.Image = null; // Очистить изображение, если ничего не найдено
+            }
         }
 
         private void CategoryTree_AfterSelect(object sender, TreeViewEventArgs e)
@@ -59,8 +86,32 @@ namespace Apteka
             string selectedCategory = e.Node.Text;
             var filtered = _context.Medicines.Where(m => m.Category == selectedCategory).ToList();
             _grid.DataSource = filtered;
+
+            // Показать изображение препарата, если оно найдено
+            if (filtered.Count > 0)
+            {
+                var selectedMedicine = filtered.FirstOrDefault(); // Выберите первый найденный препарат
+                ShowImage(selectedMedicine.ImagePath);
+            }
+            else
+            {
+                _imageBox.Image = null; // Очистить изображение, если ничего не найдено
+            }
+        }
+
+        private void ShowImage(string imagePath)
+        {
+            if (!string.IsNullOrEmpty(imagePath) && System.IO.File.Exists(imagePath))
+            {
+                _imageBox.Image = Image.FromFile(imagePath); // Загружаем изображение
+            }
+            else
+            {
+                _imageBox.Image = null; // Устанавливаем изображение в null, если путь некорректный
+            }
         }
     }
+
     public class Medicine
     {
         public int Id { get; set; }
@@ -68,6 +119,7 @@ namespace Apteka
         public string Type { get; set; }
         public string Category { get; set; }
         public string ShelfPosition { get; set; } // Место на полке
+        public string ImagePath { get; set; } // Путь к изображению
     }
 
     public class MedicineContext : DbContext
@@ -78,4 +130,6 @@ namespace Apteka
             => options.UseSqlServer("Server=MSI;Database=MedicineDB;Trusted_Connection=True;TrustServerCertificate=True;");
     }
 }
+
+
 
